@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <script>
+      const user = new URL(location).searchParams.get("name");
+      if (user === null) {
+        location.replace("username");
+      }
+      history.pushState(null, null, "/");
+    </script>
+    <script
+      src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"
+      defer
+    ></script>
+    <script src="script.js" defer></script>
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.1em;
+      }
+
+      body {
+        margin: 10px;
+      }
+
+      form {
+        width: calc(100vw - 20px);
+        display: flex;
+        position: absolute;
+        bottom: 10px;
+      }
+
+      #msg {
+        flex-grow: 1;
+        padding: 10px;
+      }
+
+      #send {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="msgs"></div>
+    <form onsubmit="return false">
+      <input
+        id="msg"
+        type="text"
+        placeholder="Message..."
+        autocomplete="off"
+        autofocus
+      />
+      <button id="send">Send</button>
+    </form>
+  </body>
+</html>

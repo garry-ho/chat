@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #username {
+        text-align: center;
+        font-size: 1.5em;
+        padding: 10px;
+      }
+
+      #submit {
+        padding: 10px;
+        font-size: 1.5em;
+      }
+
+      form {
+        margin-bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <form>
+        <input id="username" type="text" placeholder="Username..." autofocus />
+        <br />
+        <button id="submit">Submit</button>
+      </form>
+    </center>
+    <script>
+      document.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        location.replace(
+          `/?name=${encodeURI(document.querySelector("#username").value)
+            .replace(/&/g, "%26")
+            .replace(/\//g, "%2F")}`
+        );
+      });
+    </script>
+  </body>
+</html>
